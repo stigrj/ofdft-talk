@@ -1,0 +1,73 @@
+\pagenumbering{arabic}
+%\documentclass[slides]{beamer}
+\documentclass[mathserif, 8pt]{beamer}
+\usepackage[framesassubsections]{beamerprosper}
+\setbeamercovered{transparent}
+%\documentclass[slides,hyperref={pdfpagelabels=false}]{beamer}
+%\documentclass[handout,gray]{beamer}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{verbatim}
+\usepackage{amsbsy}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{booktabs} % Make some nice tables
+\usepackage{ae,aecompl}
+
+%%%%%%%%%%%% COULEURS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<presentation>
+{
+  \definecolor{beamerstructure}{RGB}{43,79,112}
+  \definecolor{sidebackground}{RGB}{230,242,250}
+  \definecolor{CTCC}{RGB}{133,188,228}
+  \color{beamerstructure}
+  \usetheme{default}
+  \usepackage{courier}
+  \beamertemplateballitem
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{sidebar left}{\thispdfpagelabel{\insertframenumber}}
+%\setbeamertemplate{footline}{\quad\insertframenumber}
+%\usecolortheme{CTCC}
+}
+\usebackgroundtemplate{\includegraphics[width=1.02\paperwidth]{../templets/ctcc_general.jpg}}
+
+\title{\\\vspace{1cm}
+A first attempt at multiresolution Orbital-Free DFT}
+%\subtitle{\textcolor{magenta}{My subtitle (if applicable)}}
+\author{Stig Rune Jensen}
+\institute[CTCC]{\\[-6mm]stig.r.jensen@uit.no\\[6mm]UiT The Arctic University of Norway\\[6mm]
+\includegraphics[height=1.5cm]{../templets/uio.pdf}\hspace{1cm} 
+\includegraphics[height=1.5cm]{../templets/sff.pdf}\hspace{1cm}
+\includegraphics[height=1.5cm]{../templets/uit.pdf}}
+\date{Troms\o, March 20th 2014}
+
+\newcommand{\gb}[1]{green!#1!black}
+\newcommand{\rb}[1]{red!#1!black}
+\newcommand{\bb}[1]{blue!#1!black}
+\newcommand{\coleq}{red!60!black}
+\newcommand{\du}{\textrm{d}}
+
+\newcommand{\mydef}{\stackrel{\text{def}}{\hbox{=}}} 
+
+\begin{document}
+
+\footnotesize
+\setlength{\unitlength}{\textwidth}
+
+{
+\usebackgroundtemplate{\includegraphics[width=1.02\paperwidth]{../templets/ctcc_forside.jpg}}
+\maketitle
+}
+
+\begin{frame}
+    \frametitle{Orbital-Free DFT}
+\end{frame}
+
+\begin{frame}
+    \frametitle{MRChem}
+\end{frame}
+
+
+\end{document}
