@@ -41,7 +41,8 @@ A first attempt at multiresolution Orbital-Free DFT}
 \includegraphics[height=1.5cm]{../templets/uio.pdf}\hspace{1cm} 
 \includegraphics[height=1.5cm]{../templets/sff.pdf}\hspace{1cm}
 \includegraphics[height=1.5cm]{../templets/uit.pdf}}
-\date{Troms\o, March 20th 2014}
+%\date{Troms\o, March 20th 2014}
+\date{\today}
 
 \newcommand{\gb}[1]{green!#1!black}
 \newcommand{\rb}[1]{red!#1!black}
@@ -61,44 +62,42 @@ A first attempt at multiresolution Orbital-Free DFT}
 \maketitle
 }
 
-\begin{frame}
-    \frametitle{The molecular Schr\"{o}dinger equation}
-    \ \\
-    \begin{equation}
-	\nonumber
-	\hat{H}\psi = E\psi
-    \end{equation}
-    \ \\
-    \begin{equation}
-	\nonumber
-	\hat{H} =   -\sum_I \frac{\nabla^2}{2M_I} - \sum_i \frac{\nabla^2}{2}
-		    +\sum_{I>J} \frac{Z_IZ_J}{|\boldsymbol{R}_I-\boldsymbol{R}_J|} 
-		    -\sum_{i,I} \frac{Z_I}{|\boldsymbol{r}_i-\boldsymbol{R}_I|} 
-		    +\sum_{i>j} \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|} 
-    \end{equation}
-    \ \\
-    \ \\
-    \ \\
-    \centering
-    For an $N$-particle problem, the wave function is $3N$-dimensional
-    \begin{equation}
-	\nonumber
-	\psi = \psi(\boldsymbol{r}_1,\boldsymbol{r}_2,\dots,\boldsymbol{r}_N)
-    \end{equation}
-    \ \\
-    \ \\
-    \ \\
-    \centering
-    $\beta$-Carotene ($C_{40}H_{56}$) has 296 electrons and an 888-dimensional wave function!
-    \begin{center}
-    \includegraphics[scale=0.3, clip, viewport = 0 150 900 430]{figures/beta-carotene.pdf}
-    \end{center}
-\end{frame}
+%\begin{frame}
+    %\frametitle{The molecular Schr\"{o}dinger equation}
+    %\ \\
+    %\begin{equation}
+	%\nonumber
+	%\hat{H}\psi = E\psi
+    %\end{equation}
+    %\ \\
+    %\begin{equation}
+	%\nonumber
+	%\hat{H} =   -\sum_I \frac{\nabla^2}{2M_I} - \sum_i \frac{\nabla^2}{2}
+		    %+\sum_{I>J} \frac{Z_IZ_J}{|\boldsymbol{R}_I-\boldsymbol{R}_J|} 
+		    %-\sum_{i,I} \frac{Z_I}{|\boldsymbol{r}_i-\boldsymbol{R}_I|} 
+		    %+\sum_{i>j} \frac{1}{|\boldsymbol{r}_i-\boldsymbol{r}_j|} 
+    %\end{equation}
+    %\ \\
+    %\ \\
+    %\ \\
+    %\centering
+    %For an $N$-particle problem, the wave function is $3N$-dimensional
+    %\begin{equation}
+	%\nonumber
+	%\psi = \psi(\boldsymbol{r}_1,\boldsymbol{r}_2,\dots,\boldsymbol{r}_N)
+    %\end{equation}
+    %\ \\
+    %\ \\
+    %\ \\
+    %\centering
+    %$\beta$-Carotene ($C_{40}H_{56}$) has 296 electrons and an 888-dimensional wave function!
+    %\includegraphics[scale=0.3, clip, viewport = 0 150 900 430]{figures/beta-carotene.pdf}
+%\end{frame}
 
 \begin{frame}
     \frametitle{Density Functional Theory}
     \centering
-    \textbf{Dramatically reduce the dimensionality}
+    \textbf{Dramatically reduce the dimensionality of the problem}
     \begin{equation}
 	\nonumber
 	\rho(\boldsymbol{r}_1) = N \int |\psi(\boldsymbol{r}_1, \boldsymbol{r}_2,\dots,
@@ -197,16 +196,16 @@ A first attempt at multiresolution Orbital-Free DFT}
     \begin{columns}
     \begin{column}{.50\textwidth}
     \centering
-    \textbf{Euler equation}
+    \textbf{KS-DFT Euler equation}
     \begin{align}
 	\nonumber
 	\mu &=
-	\frac{\delta T_s}{\delta \rho} + 
-	\frac{\delta V_{en}}{\delta \rho} + 
-	\frac{\delta J}{\delta \rho} + 
-	\frac{\delta E_{xc}}{\delta \rho}\\
+	\frac{\delta T_s[\lbrace\phi_i\rbrace]}{\delta \rho(\boldsymbol{r})} + 
+	\frac{\delta V_{en}[\rho]}{\delta \rho(\boldsymbol{r})} + 
+	\frac{\delta J[\rho]}{\delta \rho(\boldsymbol{r})} + 
+	\frac{\delta E_{xc}[\rho]}{\delta \rho(\boldsymbol{r})}\\
 	\nonumber
-	&= \frac{\delta T_s}{\delta \rho} + v_{KS}(\boldsymbol{r})
+	&= \frac{\delta T_s[\lbrace\phi_i\rbrace]}{\delta \rho(\boldsymbol{r})} + v_{KS}(\boldsymbol{r})
     \end{align}
     \end{column}
     \begin{column}{.50\textwidth}
@@ -373,16 +372,17 @@ A first attempt at multiresolution Orbital-Free DFT}
     \begin{column}{.5\textwidth}
 	\ \ \ \ \textbf{Multiwavelets}
 	\begin{itemize}
-	    \item   Cubic cells with low-order polynomial basis
+	    \item   Real-space divided into cubic cells
+	    \item   Low-order polynomial basis
 	    \item   Adaptive multiresolution grids
-	    \item   Guaranteed accuracy (basis set limit)
-	    \item   Well suited for large-scale paralleization
 	\end{itemize}
     \end{column}
     \begin{column}{.5\textwidth}
-	\ \ \ \ \textbf{foo}
+	\ \ \ \ \textbf{Features}
 	\begin{itemize}
-	    \item bar
+	    \item   Guaranteed accuracy (basis set limit)
+	    \item   Linear scaling application of integral operators
+	    \item   Efficiently parallelized using hybrid MPI/OpenMP
 	\end{itemize}
     \end{column}
     \end{columns}
@@ -428,7 +428,10 @@ A first attempt at multiresolution Orbital-Free DFT}
     \ \\
     \ \\
     \begin{itemize}
+	\item	Invert the level-shifted laplacian $\left(-\nabla^2+k^2\right)$ using the bound-state Helmholtz Green's function
+	\item	Integral equation solved iteratively to self-consistency
 	\item	Standard iterative subspace acceleration techniques (KAIN or DIIS) can be applied
+	\item	Fast and robust convergence for orbital-based SCF methods (KS-DFT and HF)
     \end{itemize}
     \ \\
     \ \\
@@ -492,27 +495,15 @@ A first attempt at multiresolution Orbital-Free DFT}
     \end{columns}
     \ \\
     \ \\
-    \ \\
     \begin{itemize}
-	\item	Two methods: Dirac-vonWeizs\"{a}cker (DvW) and Thomas-Fermi-Dirac-vonWeizs\"{a}cker (TFDvW)
+	\item	Two methods: Dirac-von Weizs\"{a}cker (DvW) and Thomas-Fermi-Dirac-von Weizs\"{a}cker (TFDvW)
 	\item	Convergence \textbf{very problematic} for many-electron systems when TF is included
-	\item	Had to introduce TF gradually to achieve convergence
+	\item	Had to introduce TF gradually to avoid divergence (add 2\% TF and converge to $10^{-2}$)
 	\item	The Borgoo-Tozer functional did not converge for any system
     \end{itemize}
     \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
-    \ \\
+    \centering
+    \includegraphics[scale=0.6, viewport = 50 560 550 730]{figures/convergence.pdf}\\
 \end{frame}
 
 \begin{frame}
@@ -538,13 +529,15 @@ A first attempt at multiresolution Orbital-Free DFT}
 	&		    &               &               &               &               &               &		    \\
 H	& MRChem	    &  -0.194320    &  -0.071640    &   -0.406534   &  -0.261826    &   -0.406534   &   -0.500000   \\
 	& Chan$^\dag$	    &		    &  -0.071	    &		    &  -0.2618      &		    &   -0.5000     \\
-        & Karasiev$^\ddag$   &  -0.1943      &  -0.0715      &   -0.406534   &  -0.261827    &   -0.4065     &		    \\
+        & Karasiev$^\ddag$  &  -0.1943      &  -0.0715      &   -0.406534   &  -0.261827    &   -0.4065     &		    \\
+	&		    &               &               &               &               &               &		    \\
 	&		    &               &               &               &               &               &		    \\
 Ne	& MRChem	    &  -7.060692    &  -0.180760    & -274.680827   & -85.734479    & -127.490748   & -128.547101   \\
 	& Chan$^\dag$	    &		    &  -0.181       &		    & -85.7343      &		    & -128.5471     \\
-	& Karasiev$^\ddag$   &  -7.0607	    &  -0.1807      & -274.68080    & -85.734451    & -127.4907	    &		    \\
+	& Karasiev$^\ddag$  &  -7.0607	    &  -0.1807      & -274.68080    & -85.734451    & -127.4907	    &		    \\
 	&		    &               &               &               &               &               &		    \\
-H$_2$	& MRChem	    &  -0.331330    &  -0.100168    &   -1.043736   &  -0.430723    &   -1.043736   &   -1.133619   \\
+	&		    &               &               &               &               &               &		    \\
+H$_2$	& MRChem	    &  -0.331330    &  -0.100168    &   -1.043736   &  -0.43072     &   -1.043736   &   -1.133619   \\
 BH	& MRChem	    &  -1.170066    &  -0.146852    &  -38.589138   & -15.301851    &  -24.629804   &  -25.131640   \\
 	&		    &               &               &               &               &               &		    \\
 \hline                                                                                  
@@ -573,10 +566,23 @@ $^\ddag$\tiny{Karasiev, Trickey, \it{Comp. Phys. Comm.} \textbf{121(5)}, 2030 (2
 
 \begin{frame}
     \frametitle{Conclusions and outlook}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Acknowledgments}
+    \begin{itemize}
+	\item	Formulation as one-orbital Kohn-Sham problem is \textbf{not appropriate}
+	\item	Convergence is very sensitive to the repulsive Thomas-Fermi potential
+	\item	Very high accuracy was easily attained once the full Thomas-Fermi was included
+	\item	Borgoo-Tozer functional did not converge for any system
+    \end{itemize}
+    \ \\
+    \ \\
+    \ \\
+    \ \\
+    \ \\
+    \begin{itemize}
+	\item	Multiwavelets can still be the ideal framework for developing new functionals
+	\item	Remove one source of error (basis set)
+	\item	Involves only a few global functions that are easily parallelized 
+	\item	Requires a different and more robust optimization algorithm (2nd order Newton-Raphson?)
+    \end{itemize}
 \end{frame}
 
 \end{document}
